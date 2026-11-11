@@ -3,7 +3,50 @@
 // Level 1: Two Pointer — Opposite Ends
 // ************************************
 
-// 1. Two Sum II
+// 1. Two Sum - return 2 distinct indexes that sum upto target.
+
+// Method 1 - Brute force
+// Time Complexity - O(n²) Space Complexity - O(1)
+function twoSumM1(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) return [i, j];
+    }
+  }
+  return -1;
+};
+// console.log(twoSumM1([2, 7, 11, 15], 9));
+
+// Method 2 - .includes() && .indexOf()
+// Time Complexity - O(n²) Space Complexity - O(1)
+function twoSumM2(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    let toFind = target - nums[i];
+    // It's usually a good rule to avoid using indexOf() || includes() inside loops for large data sets, as they hide O(n) operations behind a single line of code.
+    if (nums.includes(toFind) && nums.indexOf(toFind) !== i) {
+      return [i, nums.indexOf(toFind)];
+    }
+  }
+  return -1;
+};
+// console.log(twoSumM2([2, 7, 11, 15], 9));
+
+// Method 3 - Hash Map
+// Time Complexity - O(1) Space Complexity - O(1)
+function twoSumM3(nums, target) {
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    let toFind = target - nums[i];
+    if (map.has(toFind)) {
+      return [map.get(toFind), i];
+    } else {
+      map.set(nums[i], i);
+    }
+  }
+  return -1;
+};
+// console.log(twoSumM3([2, 7, 11, 15], 9));
+
 // 2. 3Sum
 // 3. 4Sum
 // 4. Container With Most Water
@@ -133,6 +176,7 @@
 // 67. Find Peak Element
 // 68. Search a 2D Matrix
 // 69. Search a 2D Matrix II
+
 // *****Level 13.ii: On Answer*****
 // 70. Koko Eating Bananas
 // 71. Capacity to Ship Packages Within D Days
