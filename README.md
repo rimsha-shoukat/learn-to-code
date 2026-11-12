@@ -32,7 +32,7 @@ Structured step-by-step logic-building exercises and problem sets:
 * **Phase 5: Array Patterns**
 * **Phase 6: String Patterns**
   
-  > **Credits & Acknowledgments:** The curriculum and problem structure implemented in this folder are adapted from the official materials by **Nishchal Muradia** ([CodeWithNishchal](https://www.youtube.com/@CodeWithNishchal) | [LinkedIn](https://www.linkedin.com/in/nishchal-muradia/)).
+> **Credits & Acknowledgments:** The curriculum and problem structure implemented in this folder are adapted from the official materials by **Nishchal Muradia** ([CodeWithNishchal](https://www.youtube.com/@CodeWithNishchal) | [LinkedIn](https://www.linkedin.com/in/nishchal-muradia/)).
 
 ## 📬 Connect
 
