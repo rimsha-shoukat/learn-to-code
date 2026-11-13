@@ -47,7 +47,56 @@ function twoSumM3(nums, target) {
 };
 // console.log(twoSumM3([2, 7, 11, 15], 9));
 
-// 2. 3Sum
+// 2. 3Sum - return all occurrences of 3 distinct indexes that sum upto 0.
+
+// Method 1 - Brute force 
+// Time Complexity - O(n³) Space Complexity - O(1)
+function threeSumM1(nums) {
+  nums.sort((a, b) => a - b);
+  let res = new Set(); // It's better to avoid this approach it's just for learning purpose.    
+  let n = nums.length;
+  for (let i = 0; i < n - 2; i++) {
+    for (let j = i + 1; j < n - 1; j++) {
+      for (let k = j + 1; k < n; k++) {
+        if (nums[i] + nums[j] + nums[k] === 0) {
+          res.add(JSON.stringify([nums[i], nums[j], nums[k]]));
+        };
+      }
+    }
+  }
+  return Array.from(res).map(item => JSON.parse(item));
+};
+// console.log(threeSumM1([-1,0,1,2,-1,-4]));
+
+// Method 2 - Skipping Duplicates
+// Time Complexity - O(n²) Space Complexity - O(1)
+function threeSumM2(nums) {
+  nums.sort((a, b) => a - b);
+  let res = [];
+  let n = nums.length;
+  for (let i = 0; i < n - 2; i++) {
+    if (nums[i - 1] === nums[i]) continue;
+    let j = i + 1;
+    let k = n - 1;
+    while (j < k) {
+      let sum = nums[i] + nums[j] + nums[k];
+      if (sum === 0) {
+        res.push([nums[i], nums[j], nums[k]]);
+        while ((j < k) && (nums[j] === nums[j + 1])) j++;
+        while ((j < k) && (nums[k] === nums[k - 1])) k--;
+        j++;
+        k--;
+      } else if (sum < 0) {
+        j++;
+      } else {
+        k--;
+      }
+    }
+  }
+  return res;
+};
+// console.log(threeSumM2([-1,0,1,2,-1,-4]));
+
 // 3. 4Sum
 // 4. Container With Most Water
 // 5. Trapping Rain Water
