@@ -98,6 +98,59 @@ function threeSumM2(nums) {
 // console.log(threeSumM2([-1,0,1,2,-1,-4]));
 
 // 3. 4Sum
+// Method 1 - Brute force
+// Time Complexity - O(n⁴) Space Complexity - O(1)
+function fourSumM1(nums) {
+  nums.sort((a, b) => a - b);
+  let res = new Set();
+  let n = nums.length;
+  for (let i = 0; i < n - 3; i++) {
+    for (let j = i + 1; j < n - 2; j++) {
+      for (let k = j + 1; k < n - 1; k++) {
+        for (let l = k + 1; l < n; l++) {
+          if ((nums[i] + nums[j] + nums[k] + nums[l]) === target) {
+            res.add(JSON.stringify([nums[i], nums[j], nums[k], nums[l]]));
+          }
+        }
+      }
+    }
+  }
+  return Array.from(res).map(item => JSON.parse(item));
+};
+// console.log(fourSumM1([1,0,-1,0,-2,2], 0));
+
+// Method 2 - Optimal approach
+// Time Complexity - O(n³) Space Complexity - O(1)
+function fourSumM2(nums, target) {
+  nums.sort((a, b) => a - b);
+  let res = [];
+  let N = nums.length;
+  for (let i = 0; i < N - 3; i++) {
+    if ((i > 0) && (nums[i] === nums[i - 1])) continue;
+    for (let j = i + 1; j < N - 2; j++) {
+      if ((j > i + 1) && (nums[j] === nums[j - 1])) continue;
+      let n = j + 1;
+      let m = N - 1;
+      while (n < m) {
+        let sum = nums[i] + nums[j] + nums[n] + nums[m];
+        if (sum === target) {
+          res.push([nums[i], nums[j], nums[n], nums[m]]);
+          while ((n < m) && (nums[n] === nums[n + 1])) n++;
+          while ((n < m) && (nums[m] === nums[m - 1])) m--;
+          n++;
+          m--;
+        } else if (sum > target) {
+          m--;
+        } else {
+          n++;
+        }
+      }
+    }
+  }
+  return res;
+};
+// console.log(fourSumM2([1,0,-1,0,-2,2], 0));
+
 // 4. Container With Most Water
 // 5. Trapping Rain Water
 // 6. Valid Palindrome
