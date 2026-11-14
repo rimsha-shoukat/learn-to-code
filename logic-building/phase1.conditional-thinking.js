@@ -1,3 +1,5 @@
+// Master Your logic - file by CodeWithNishchal
+
 // GOAL: Understand how to make decisions using conditions.
 
 // **************************

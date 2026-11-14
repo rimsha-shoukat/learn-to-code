@@ -1,3 +1,5 @@
+// Master Your logic - file by CodeWithNishchal
+
 // GOAL: Master loops, iteration, and dry-run thinking.
 
 // **********************
