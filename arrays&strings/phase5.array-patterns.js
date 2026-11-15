@@ -1,3 +1,4 @@
+// Arrays & strings - file by CodeWithNishchal
 
 // ************************************
 // Level 1: Two Pointer — Opposite Ends
@@ -152,8 +153,60 @@ function fourSumM2(nums, target) {
 // console.log(fourSumM2([1,0,-1,0,-2,2], 0));
 
 // 4. Container With Most Water
+// Time Complexity - O(n) Space Complexity O(1)
+function mostWater(height) {
+  let p1 = 0;
+  let p2 = height.length - 1;
+  let h = 0;
+  while (p1 < p2) {
+    h = Math.max(h, Math.min(height[p1], height[p2]) * (p2 - p1));
+    (height[p1] <= height[p2]) ? p1++ : p2--;
+  }
+  return h;
+};
+console.log(mostWater([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+
 // 5. Trapping Rain Water
+// Time Complexity - O(n) Space Complexity O(1)
+function rainWater(height) {
+  let greater = 0;
+  let water = 0;
+  const greatest = Math.max(...height);
+  const index = height.indexOf(greatest);
+  for (let i = 0; i < index; i++) {
+    if (greater < height[i]) {
+      greater = height[i];
+    } else {
+      water += greater - height[i];
+    }
+  }
+  greater = 0;
+  for (let i = height.length - 1; i > index; i--) {
+    if (greater < height[i]) {
+      greater = height[i];
+    } else {
+      water += greater - height[i];
+    }
+  }
+  return water;
+};
+console.log(rainWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+
 // 6. Valid Palindrome
+// Time Complexity - O(n) Space Complexity O(n)
+function validPalindrome(s) {
+  let S = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  return check(0, S.length - 1, S);
+};
+function check(a, b, S) {
+  if (a >= b) return true;
+  if (S[a] !== S[b]) {
+    return false;
+  }
+  return check(a + 1, b - 1, S);
+}
+console.log(validPalindrome("A man, a plan, a canal: Panama"));
+
 // 7. Reverse a sorted array in-place
 // 8. Minimum difference pair in sorted array
 
