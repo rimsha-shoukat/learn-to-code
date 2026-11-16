@@ -164,7 +164,7 @@ function mostWater(height) {
   }
   return h;
 };
-console.log(mostWater([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+// console.log(mostWater([1, 8, 6, 2, 5, 4, 8, 3, 7]));
 
 // 5. Trapping Rain Water
 // Time Complexity - O(n) Space Complexity O(1)
@@ -190,7 +190,7 @@ function rainWater(height) {
   }
   return water;
 };
-console.log(rainWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+// console.log(rainWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
 
 // 6. Valid Palindrome
 // Time Complexity - O(n) Space Complexity O(n)
@@ -205,10 +205,32 @@ function check(a, b, S) {
   }
   return check(a + 1, b - 1, S);
 }
-console.log(validPalindrome("A man, a plan, a canal: Panama"));
+// console.log(validPalindrome("A man, a plan, a canal: Panama"));
 
 // 7. Reverse a sorted array in-place
+// Time complexity - O(n) Space Complexity - O(1)
+function reverseSortedArray(array) {
+  let i = 0;
+  let j = array.length - 1;
+  while (i < j) {
+    [array[i], array[j]] = [array[j], array[i]];
+    i++;
+    j--;
+  }
+  return array;
+};
+// console.log(reverseSortedArray([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+
 // 8. Minimum difference pair in sorted array
+// Time complexity - O(n) Space Complexity - O(1)
+function minimumDiff(array) {
+  let min = +Infinity;
+  for (let i = 0; i < array.length - 1; i++) {
+    min = Math.min(min, array[i + 1] - array[i]);
+  };
+  return min;
+};
+// console.log(minimumDiff([1, 4, 6, 8, 9]));
 
 // *************************************
 // Level 2: Two Pointer — Same Direction
