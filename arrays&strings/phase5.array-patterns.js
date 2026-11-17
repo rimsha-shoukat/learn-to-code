@@ -237,8 +237,49 @@ function minimumDiff(array) {
 // *************************************
 
 // 9. Remove Duplicates from Sorted Array
+// Time complexity - O(n) Space Complexity - O(1)
+function removeDuplicatesI(array) {
+  let i = 0;
+  let j = 1;
+  while (j <= array.length) {
+    if (array[i] !== array[j]) {
+      i++;
+      array[i] = array[j];
+    }
+    j++;
+  }
+  return array;
+};
+// console.log(removeDuplicatesI([1, 2, 2, 3, 4, 4, 4, 5, 6, 6]));
+
 // 10. Remove Duplicates from Sorted Array II
+// Time Complexity - O(n) Space Complexity - O(1)
+function removeDuplicatesII(nums) {
+  let j = 0;
+  for (let i = 2; i < nums.length; i++) {
+    if (nums[j] !== nums[i]) {
+      nums[j + 2] = nums[i];
+      j++;
+    }
+  }
+  return nums;
+};
+// console.log(removeDuplicatesII([1, 1, 1, 2, 3, 3, 3, 4, 4, 4, 5, 6, 6]));
+
 // 11. Remove Element
+// Time Complexity - O() Space Complexity O()
+function removeElement(nums, val) {
+  let k = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== val) {
+      nums[k] = nums[i]
+      k++;
+    }
+  }
+  return k;
+};
+// console.log(removeElement([3,2,2,3], 3));
+
 // 12. Move Zeroes
 // 13. Squares of a Sorted Array
 // 14. Find the Duplicate Number
