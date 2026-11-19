@@ -267,7 +267,7 @@ function removeDuplicatesII(nums) {
 // console.log(removeDuplicatesII([1, 1, 1, 2, 3, 3, 3, 4, 4, 4, 5, 6, 6]));
 
 // 11. Remove Element
-// Time Complexity - O() Space Complexity O()
+// Time Complexity - O(n) Space Complexity O(1)
 function removeElement(nums, val) {
   let k = 0;
   for (let i = 0; i < nums.length; i++) {
@@ -281,8 +281,47 @@ function removeElement(nums, val) {
 // console.log(removeElement([3,2,2,3], 3));
 
 // 12. Move Zeroes
+// Time Complexity - O(n) Space Complexity O(1)
+function moveZeroes(nums) {
+  let j = nums.indexOf(0);
+  if (j === -1) return nums;
+  for (let i = j + 1; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      j++;
+    }
+  }
+  return nums;
+}
+// console.log(moveZeroes([0, 1, 0, 7, 9, 0, 5, 3]));
+
 // 13. Squares of a Sorted Array
+// Time Complexity - O(n) Space Complexity - O(1)
+function squaresOfArray(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] = nums[i] * nums[i];
+  }
+  return nums.sort((a, b) => a - b);
+};
+// console.log(squaresOfArray([-7, -3, 2, 3, 11]));
+
 // 14. Find the Duplicate Number
+// Time Complexity - O(n) Space Complexity - O(1)
+function findDuplicate(nums) {
+  let t = nums[0];
+  let h = nums[0];
+  do {
+    t = nums[t];
+    h = nums[nums[h]];
+  } while (t !== h);
+  t = nums[0];
+  while (h !== t) {
+    t = nums[t];
+    h = nums[h];
+  }
+  return h;
+}
+// console.log(findDuplicate([3,1,3,4,2]));
 
 // *******************************
 // Level 3: Partition / Dutch Flag
